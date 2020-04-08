@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="zz-common" />
+        <module name="sys-feign" />
+        <module name="zz-gateway" />
+        <module name="centre-sdfasdf" />
+        <module name="sys-service" />
+        <module name="sys-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="centre-asdfa" target="1.7" />
+      <module name="centre-sdfasdf" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="centre-asdfa" options="" />
+      <module name="centre-sdfasdf" options="-parameters" />
+      <module name="sys-api" options="-parameters" />
+      <module name="sys-feign" options="-parameters" />
+      <module name="sys-service" options="-parameters" />
+      <module name="zz-api" options="" />
+      <module name="zz-common" options="-parameters" />
+      <module name="zz-feign" options="" />
+      <module name="zz-gateway" options="-parameters" />
+      <module name="zz-service" options="-parameters" />
+      <module name="zzcloud" options="-parameters" />
+    </option>
+  </component>
+</project>

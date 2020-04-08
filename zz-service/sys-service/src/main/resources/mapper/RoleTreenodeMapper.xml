@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.zzcloud.sysservice.mapper.RoleTreenodeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zking.zzcloud.sysservice.model.RoleTreenode">
+        <id column="rtid" property="rtid" />
+        <result column="role_id" property="roleId" />
+        <result column="tree_node_id" property="treeNodeId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        rtid, role_id, tree_node_id
+    </sql>
+
+</mapper>

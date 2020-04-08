@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.zzcloud.sysservice.mapper.TreeNodeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zking.zzcloud.sysservice.model.TreeNode">
+        <id column="tree_node_id" property="treeNodeId" />
+        <result column="tree_node_name" property="treeNodeName" />
+        <result column="tree_node_type" property="treeNodeType" />
+        <result column="parent_node_id" property="parentNodeId" />
+        <result column="url" property="url" />
+        <result column="position" property="position" />
+        <result column="icon" property="icon" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        tree_node_id, tree_node_name, tree_node_type, parent_node_id, url, position, icon
+    </sql>
+
+</mapper>
