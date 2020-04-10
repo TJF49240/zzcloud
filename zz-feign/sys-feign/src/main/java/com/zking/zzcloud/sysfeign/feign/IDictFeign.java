@@ -7,11 +7,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient("sys-service")
 public interface IDictFeign {
-    @RequestMapping(value = "/dict/save", method = RequestMethod.POST)
-    String save(DictDTO dictDTO);
 
-    @RequestMapping(value = "/dict/update", method = RequestMethod.POST)
-    String update(DictDTO dictDTO);
+
+    @RequestMapping(value = "/dict/together", method = RequestMethod.POST)
+    String together(DictDTO dictDTO);
 
     @RequestMapping(value = "/dict/remove", method = RequestMethod.POST)
     String remove(DictDTO dictDTO);
