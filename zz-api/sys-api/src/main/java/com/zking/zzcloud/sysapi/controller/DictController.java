@@ -15,17 +15,14 @@ public class DictController {
     @Autowired
     private IDictFeign dictFeign;
 
-    @RequestMapping("/save")
-    public String save(DictDTO dictDTO) {
-        log.info("DictDTO={}", dictDTO);
-        String data = dictFeign.save(dictDTO);
-        return data;
-    }
 
-    @RequestMapping("/update")
-    public String update(DictDTO dictDTO) {
-        log.info("DictDTO={}", dictDTO);
-        String data = dictFeign.update(dictDTO);
+
+
+
+    @RequestMapping("/together")
+    public String together(DictDTO dictDTO) {
+        log.info("together={}", dictDTO);
+        String data = dictFeign.together(dictDTO);
         return data;
     }
 
