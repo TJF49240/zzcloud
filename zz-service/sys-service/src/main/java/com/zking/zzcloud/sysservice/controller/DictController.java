@@ -36,26 +36,17 @@ public class DictController {
     @Autowired
     private MapperFactory mapperFactory;
 
-    private JsonData jsonData = new JsonData();
 
 
-    @RequestMapping("/save")
-    public JsonData save(@RequestBody DictDTO dictDTO) {
-        log.info("DictDTO={}", dictDTO);
-        MapperFacade mapper = mapperFactory.getMapperFacade();
-        Dict dict = mapper.map(dictDTO, Dict.class);
-        dictService.save(dict);
-        jsonData.put("coce", 0);
-        jsonData.put("message", "新增成功");
-        jsonData.put("ts", System.currentTimeMillis());
-        return jsonData;
-    }
 
 
     @RequestMapping("/together")
     public JsonData together(@RequestBody DictDTO dictDTO) {
-        if (dictDTO.getDictId() == null && dictDTO.getDictId().equals("")) {
-            log.info("together={}", dictDTO);
+        JsonData jsonData = new JsonData();
+        System.out.println("1111111111111");
+        if (dictDTO.getDictId() == null ) {
+            System.out.println("222222222");
+            log.info("together1={}", dictDTO);
             MapperFacade mapper = mapperFactory.getMapperFacade();
             Dict dict = mapper.map(dictDTO, Dict.class);
             dictService.save(dict);
@@ -64,7 +55,8 @@ public class DictController {
             jsonData.put("ts", System.currentTimeMillis());
             return jsonData;
         }else{
-            log.info("DictDTO={}", dictDTO);
+            System.out.println("33333333");
+            log.info("together2={}", dictDTO);
             UpdateWrapper<Dict> updateWrapper = new UpdateWrapper<>();
             updateWrapper.eq("dict_id", dictDTO.getDictId());
             updateWrapper.set("dict_name", dictDTO.getDictName());
@@ -83,6 +75,7 @@ public class DictController {
 
     @RequestMapping("/remove")
     public JsonData delete(@RequestBody DictDTO dictDTO) {
+        JsonData jsonData = new JsonData();
         log.info("DictDTO={}", dictDTO);
         dictService.removeById(dictDTO.getDictId());
         jsonData.put("coce", 0);
@@ -101,6 +94,7 @@ public class DictController {
 
     @RequestMapping("/list")
     public JsonData list(@RequestBody DictDTO dictDTO) {
+        JsonData jsonData = new JsonData();
         log.info("DictDTO={}", dictDTO);
         Page<Dict> page = new Page<>(dictDTO.getPageNum(), dictDTO.getRows());
 
