@@ -1,6 +1,7 @@
 package com.zking.zzcloud.sysservice.config;
 
 import com.zking.zzcloud.sysfeign.dto.CalDTO;
+import com.zking.zzcloud.sysfeign.dto.DictDTO;
 import com.zking.zzcloud.sysservice.model.Cal;
 import com.zking.zzcloud.sysservice.model.Dict;
 import ma.glasnost.orika.MapperFactory;
@@ -29,7 +30,7 @@ public class MapperConfig {
                 .byDefault()
                 .register();
 
-        mapperFactory.classMap(Dict.class, Dict.class)
+        mapperFactory.classMap(Dict.class, DictDTO.class)
                 .byDefault()
                 .register();
     }
