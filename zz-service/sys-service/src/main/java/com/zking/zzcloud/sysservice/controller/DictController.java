@@ -37,15 +37,11 @@ public class DictController {
     private MapperFactory mapperFactory;
 
 
-
-
-
     @RequestMapping("/together")
     public JsonData together(@RequestBody DictDTO dictDTO) {
         JsonData jsonData = new JsonData();
-        System.out.println("1111111111111");
-        if (dictDTO.getDictId() == null ) {
-            System.out.println("222222222");
+        System.out.println(dictDTO.getDictId());
+        if (dictDTO.getDictId() == null) {
             log.info("together1={}", dictDTO);
             MapperFacade mapper = mapperFactory.getMapperFacade();
             Dict dict = mapper.map(dictDTO, Dict.class);
@@ -54,15 +50,13 @@ public class DictController {
             jsonData.put("message", "新增成功");
             jsonData.put("ts", System.currentTimeMillis());
             return jsonData;
-        }else{
-            System.out.println("33333333");
+        } else {
             log.info("together2={}", dictDTO);
             UpdateWrapper<Dict> updateWrapper = new UpdateWrapper<>();
             updateWrapper.eq("dict_id", dictDTO.getDictId());
             updateWrapper.set("dict_name", dictDTO.getDictName());
             updateWrapper.set("dict_text", dictDTO.getDictText());
             updateWrapper.set("dict_value", dictDTO.getDictValue());
-            updateWrapper.set("editable", dictDTO.getEditable());
             dictService.update(updateWrapper);
             jsonData.put("coce", 0);
             jsonData.put("message", "修改成功");
@@ -95,20 +89,17 @@ public class DictController {
     @RequestMapping("/list")
     public JsonData list(@RequestBody DictDTO dictDTO) {
         JsonData jsonData = new JsonData();
-        log.info("DictDTO={}", dictDTO);
         Page<Dict> page = new Page<>(dictDTO.getPageNum(), dictDTO.getRows());
-
-        QueryWrapper<Dict> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<Dict> queryWrapper = new QueryWrapper<Dict>();
         if (StringUtils.isNotBlank(dictDTO.getDictName())) {
             queryWrapper.like("dict_name", dictDTO.getDictName());
         }
         queryWrapper.orderByDesc("dict_name");
-        jsonData.put("coce", 0);
-        jsonData.put("message", "查询成功");
-        jsonData.put("ts", System.currentTimeMillis());
-        Page<Dict> page1 = dictService.page(page, queryWrapper);
-
-        jsonData.setResult(page1.getRecords());
+        Page<Dict> dictPage1 = dictService.page(page, queryWrapper);
+        jsonData.setCode(0);
+        jsonData.setTotal((int) dictPage1.getTotal());
+        jsonData.setResult(dictPage1.getRecords());
+        jsonData.setMessage("查询数据字典成功！");
         return jsonData;
     }
 
