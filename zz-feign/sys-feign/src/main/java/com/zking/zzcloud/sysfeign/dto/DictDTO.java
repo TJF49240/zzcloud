@@ -34,10 +34,11 @@ public class DictDTO {
     /**
      * 能否编辑: 1 可 0 不可
      */
-    private Integer editable;
+    private Integer editable=1;
 
 
-    private Integer pageNum;
+    private Integer pageNum=5;
 
     private Integer rows;
+
 }
